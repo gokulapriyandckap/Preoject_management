@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<div class="mainContainer" style="display: flex; flex-direction: row-reverse; justify-content: space-evenly;">
+<div class="mainContainer" style="display: flex; justify-content: space-evenly;">
 <form action="../index.php" method="post">
     <div class="mb-6">
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" style="color: black">Project Name</label>
@@ -32,7 +32,7 @@
             <th scope="col" class="px-6 py-3">
                 Tasks
             </th>
-            <th>
+            <th scope="col" class="px-6 py-3">
                 Action
             </th>
         </tr>

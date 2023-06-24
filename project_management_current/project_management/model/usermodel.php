@@ -24,10 +24,12 @@ class UserModel extends database {
         $taskDescription = $taskData['task_description'];
         $projectId = $taskData['projectId'];
 
-        // var_dump($image['name']);
-        var_dump($image['task_image']['name']);
+//         var_dump($image['name']);
+        $task_image = $image['task_image']['name'];
+//        var_dump($task_image);
 
-        $insertData = $this->db->prepare("INSERT INTO projects(project_name) VALUES('$data')")
+        $insertData = $this->db->query("INSERT INTO tasks(task_name,task_description,task_image,project_id) VALUES('$taskName','$taskDescription','$task_image',$projectId)");
+        var_dump($insertData);
     }
 
     public function update($id, $data) {
