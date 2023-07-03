@@ -16,77 +16,57 @@ class userController
         require 'View/homePage.php';
     }
 
-    public function create($data){
+    public function create($data,$img){
         if($data){
-            $this->modal->create($data);
+            $this->modal->create($data,$img);
         }
     }
     public function getProjectId($projectId){
 //        var_dump($projectId);
-        //geted projectid
+        //geted projecId
         $project_Id = $projectId;
-
+        //this function for fetching the project details from the database
         $data = $this->modal->fetchProject();
-
+        //this function fetches the task details from the backend and show it to the frontend
         $fetchedValue = $this->modal->taskFetch($project_Id);
-
+        //this shows the unDeletedTasks details from the backend
         $deleteTasks = $this->modal->undeletedTasks($project_Id);
-//        var_dump($fetchedValue);
-//        $id = $fetchedValue['id'];
-//        var_dump($id);
+        //this shows the deleteCount from the database
+        $deleteCount = $this->modal->deleteCount($project_Id);
+        //it shows the undeleted count from the backend
+        $undeletedCount = $this->modal->undeletedCount($project_Id);
+        //for showing projectDetails
+        $projectDetail = $this->modal->projectDetail($project_Id);
 
-//        $fetchedTasks = $this->modal->taskFetched();
+        $productImg = $this->modal->productImg($project_Id);
 
-//        $fetchedTasks = $this->modal->taskFetch();
-//        echo $projectId;
-//        header('location:/');
 
         require 'View/homePage.php';
         require 'View/taskDetails.php';
     }
 
-
     public function taskDetails($taskDetails,$img){
-        var_dump($taskDetails);
-        var_dump($img);
-
         $this->modal->taskDetails($taskDetails,$img);
         require 'View/addTask.php';
     }
     public function showAddTaskPage($addTaskId){
-//        var_dump($addTaskId);
         $addTaskID = $addTaskId['addTaskId'];
-
         require 'View/addTask.php';
     }
-    public function addTaskId(){
-//        $addTaskID = $addTaskId['getTaskid'];
-//        require 'View/addTask.php';
-
-    }
-
     public function taskId(){
-
-//        var_dump();
         $taskValue = $_POST['taskId'];
-//
         $valuess = $this->modal->taskFetched($taskValue);
 
-//        var_dump($taskid);
-//        $taskIdValue = $taskId;
-//        var_dump($taskIdValue);
     }
     public function showTaskPage($task_id){
       $task_details =  $this->modal->showTaks($task_id);
+        $taskImg = $this->modal->taskImgs($task_id);
+
         require 'View/taskDetails.php';
     }
 
     public function hideTask($id){
-//        var_dump($id);
         $deleteId = $id;
-//        echo($deleteId);
         $this->modal->delete($deleteId);
-//        require 'View/taskDetails.php';
-
     }
 }

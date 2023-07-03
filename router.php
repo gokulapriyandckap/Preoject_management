@@ -34,13 +34,13 @@ class Router
     foreach ($this->routerDetails as $routerValue){
         if($routerValue['uri'] == $serverUri && $routerValue['method'] == $serverMethod){
             $action = $routerValue['action'];
-            var_dump($action);
+//            var_dump($action);
             switch ($action)
             {
                 case 'viewHomePage':
                     $this->controller->showHomePage();
                 case "insertProject":
-                    $this->controller->create($_POST);
+                    $this->controller->create($_POST,$_FILES);
                     break;
                 case "fetchProject":
                     $this->controller->fetchProject();

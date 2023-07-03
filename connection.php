@@ -9,7 +9,7 @@ class DatabaseConnection
         try {
             $this->db = new PDO
             (
-                'mysql:host=127.0.0.1;dbname=project_managent',
+                'mysql:host=127.0.0.1;dbname=project_management',
                 'admin',
                 'welcome'
             );
